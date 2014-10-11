@@ -1,0 +1,247 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Booons app version 2</title>
+    </head>
+    <body>
+    	<!-- all layout and looks -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css" />
+		<!-- temp css for development -->
+		<link rel="stylesheet" href="css/basic.css" />
+
+    	<!-- technical stuff -->
+		<script src="js/jquery-1.9.1.min.js"></script>
+		<script src="js/jquery.mobile-1.4.2.min.js"></script>
+
+		<!-- added from r2 -->
+        <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+        <script type="text/javascript" charset="utf-8" src="jquery_1.5.2.min.js"></script>
+
+        <script type="text/javascript" charset="utf-8" src="js/booons.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/interaction.js"></script>
+        <script type="text/javascript" src="js/PushNotification.js"></script>
+		<script type="text/javascript" src="js/sha1.js"></script>
+		
+		<!-- fontawesome link -->
+		<link rel="stylesheet" href="ext/fontawesome/css/font-awesome.min.css">
+
+<!-- Start of first index page-->
+		 <div data-role="page" id="login"> 
+			<div data-role="header">
+				<h1>booons 2</h1>
+				<a href="#debug" class="ui-btn-left" data-transition="flip" data-direction="reverse" data-icon="grid">debug</a>
+			</div>
+			<div data-role="content">
+				<img id="logo" src="img/logo.png"/>
+				<div class="formItem">
+					<label for="text-basic"><i class="fa fa-user"></i></label>
+					<input type="text" placeholder="@Naam" id="txtUsername" value="" />
+				</div> 
+				<div class="formItem">
+					<label for="text-basic"><i class="fa fa-coffee"></i></label>
+					<input type="text" placeholder="#Groep" id="txtGroup" value=""/> 
+				</div> 
+				<div class="formItem">
+					<input type="button" value="Doe mee!" id="btnSubmitLogin" /> 
+				</div> 
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<h4>&copy; 2014 Booons.nl by SEOns</h4>
+			</div>
+		</div>
+<!-- /page -->
+
+<!-- Start of user list for group page-->
+		 <div data-role="page" id="group_userlist"> 
+			<div data-role="header">
+				<h1 class="hdrGroupName">#groupname</h1>
+				<a href="#debug" class="ui-btn-left" data-transition="flip" data-direction="reverse" data-icon="grid">debug</a>
+				<a href="#login" class="ui-btn-right" data-transition="flip" data-direction="reverse" data-icon="grid">leave</a>
+			</div>
+			<div data-role="content">
+				<div class="divRoundRunner">
+					Er wordt nu koffie gehaald door <span class="lblRunnerName">iemand</span>.
+					<div class="divCloseRound"><input type="button" value="Klaar!" class="btnCloseRound" /></div>				
+				</div>
+				<div class="divRoundCounter">
+					ronde sluit over<br />
+					<span class="countDown"></span>
+				</div>
+				<div class="divRoundButton">
+					<input type="button" value="Start ronde" class="btnStartRound" />				
+				</div>				
+				<div id="lstUserlist">
+				</div>
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<h4>&copy; 2014 Booons.nl by SEOns</h4>
+			</div>
+		</div>
+<!-- /page -->
+
+<!-- Start of event list for group page-->
+		 <div data-role="page" id="group_eventlist"> 
+			<div data-role="header">
+				<h1 class="hdrGroupName">#groupname</h1>
+				<a href="#debug" class="ui-btn-left" data-transition="flip" data-direction="reverse" data-icon="grid">debug</a>
+				<a href="#login" class="ui-btn-right" data-transition="flip" data-direction="reverse" data-icon="grid">leave</a>
+			</div>
+			<div data-role="content">
+				<div class="divRoundRunner">
+					Er wordt nu koffie gehaald door <span class="lblRunnerName">iemand</span>.
+					<div class="divCloseRound"><input type="button" value="Klaar!" class="btnCloseRound" /></div>				
+				</div>
+				<div class="divRoundCounter">
+					ronde sluit over<br />
+					<span class="countDown"></span>
+					<input type="button" value="Bestel" id="btnSelectProduct">
+				</div>
+				<div class="divRoundButton">
+					<input type="button" value="Start ronde" class="btnStartRound" />				
+				</div>				
+				<div id="lstEventlist">
+						<ul id="eventList-ul">
+						</ul>
+				</div>
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<h4>&copy; 2014 Booons.nl by SEOns</h4>
+			</div>
+		</div>
+<!-- /page -->
+
+<!-- Start of round selection page-->
+		 <div data-role="page" id="round_select"> 
+			<div data-role="header">
+				<h1 class="hdrGroupName">#groupname</h1>
+				<a href="#debug" class="ui-btn-left" data-transition="flip" data-direction="reverse" data-icon="grid">debug</a>
+				<a href="#login" class="ui-btn-right" data-transition="flip" data-direction="reverse" data-icon="grid">leave</a>
+			</div>
+			<div data-role="content">
+				<div id="lstProductlist">
+					<li class="liProduct">Koffie</li>
+					<li class="liProduct">Water</li>
+					<li class="liProduct">Thee</li>
+					<li class="liProduct">Melk</li>
+				</div>
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<h4>&copy; 2014 Booons.nl by SEOns</h4>
+			</div>
+		</div>
+<!-- /page -->
+
+<!-- Start of shoppinglist page-->
+		 <div data-role="page" id="order"> 
+			<div data-role="header">
+				<h1>What to get</h1>
+				<a href="#login" class="ui-btn-right" data-transition="flip" data-direction="reverse" data-icon="grid">leave</a>
+			</div>
+			<div data-role="content">
+				<div class="divRoundRunner">
+					Er wordt nu koffie gehaald door <span class="lblRunnerName">iemand</span>.
+					<div class="divCloseRound"><input type="button" value="Klaar!" class="btnCloseRound" /></div>				
+				</div>
+				<div id="lstRoundlist">
+					<li class="liProduct">Koffie voor Frank</li>
+					<li class="liProduct">Water voor x</li>
+					<li class="liProduct">Thee voor y</li>
+				</div>
+			</div>				
+			<div data-role="footer" data-position="fixed">
+				<h4>&copy; 2014 Booons.nl by SEOns</h4>
+			</div>
+		</div>
+<!-- /page -->
+
+
+<!-- Start of debug page-->
+		 <div data-role="page" id="debug"> 
+			<div data-role="header">
+				<h1>debug info</h1>
+				<a href="#login" class="ui-btn-right" data-transition="flip" data-direction="reverse" data-icon="grid">leave</a>
+			</div>
+			<div data-role="content">
+				<h2>Saved vars</h2>
+				Last server update on group:<br />
+				<input type="text" placeholder="" id="dbgSync" value="" /> 
+				Username:<br />
+				<input type="text" placeholder="" id="dbgUsername" value="" /> 
+				<input type="text" placeholder="" id="dbgRound" value="" /> 
+				<h2>GCM event logging:</h2>
+				<ul id="app-status-ul">
+					<li>Process started</li>
+				</ul>
+				Group:<br />
+				<input type="text" placeholder="" id="dbgGroup" value="" /> 
+				Token:<br />
+				<input type="text" placeholder="" id="dbgToken" value="" /> 
+				Roundstatus:<br />
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<h4>&copy; 2014 Booons.nl by SEOns</h4>
+			</div>
+		</div>
+<!-- /page -->
+    </body>
+    <script>   
+    	$(".btnCloseRound").click(function(){
+			console.log('clicked to close round');
+			alert('nog te maken: afsluiten!');
+			setTimeout(function() {$.mobile.changePage("#order", {transition : "flip"}); },200);
+    	});
+    	$("#btnSelectProduct").click(function(){
+			console.log('clicked to join running round');
+			setTimeout(function() {$.mobile.changePage("#round_select", {transition : "flip"}); },200);
+    	});
+     
+    	$(".liProduct").click(function(){
+    		var sProduct = $(this).text();
+			console.log('clicked a product ('+ sProduct +')');
+	    	setRoundProduct(sProduct);
+			console.log('send the round data to api');	    	
+    	});
+    	
+		$("#btnSubmitLogin").click(function(){
+			console.log('login submit clicked');
+			if ($("#txtUsername").val() != '' && $("#txtGroup").val() != ''){
+				console.log('set dbg objects');
+				$("#dbgUsername").val($("#txtUsername").val());
+				$("#dbgGroup").val($("#txtGroup").val());
+				console.log('register the device');
+				$("#app-status-ul").append('<li>call register function</li>');
+				registerDevice();
+				console.log('login the user bu api');
+	//			alert('token in index: '+ $("#dbgToken").val());
+				setUserInGroup();
+	//			alert('token in index2: '+ $("#dbgToken").val());
+				console.log('get the event for the group from api');
+				getGroupDataFromApi();
+				console.log('set groupnames');
+				$(".hdrGroupName").text('#' + $("#dbgGroup").val());
+				console.log('flip page, after short delay');
+				setTimeout(function() {$.mobile.changePage("#group_userlist", {transition : "flip"}); },200);
+			}
+			else {	
+				alert('Booons is anoniem, maar niet zo anoniem he?!');
+			}
+	    });
+	    
+		$(".btnStartRound").click(function(){
+			console.log('round start clicked');
+			$.mobile.changePage("#round_select", {transition : "flip"});
+	    });
+	    
+		$( "#group_userlist" ).on("swipeleft", function(){
+			console.log('left swipe to eventlist for group');
+			$.mobile.changePage("#group_eventlist", {transition : "flip"});
+		});	    
+
+		$( "#group_eventlist" ).on("swiperight", function(){
+			console.log('right swipe to eventlist for group');
+			$.mobile.changePage("#group_userlist", {transition : "flip"});
+		});	    
+    </script>
+</html>

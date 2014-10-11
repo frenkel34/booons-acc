@@ -1,0 +1,70 @@
+body{
+font-size:1.2em;
+font-family: calibri;
+}
+#login{
+background-color:#FFF5E0 !important;
+}
+input{
+width:100%;
+height: 35px;
+font-size:1.2em;
+font-family: calibri;	
+}
+#app-status-ul, #app-status-div, h2, a, #users-ul, .tdEvent{
+color:#a1a1a1;
+font-size:0.8em;
+font-family: calibri;	
+}
+.formItem{
+border-bottom: 1px solid #EFEAE3;
+}
+.formItem i{
+font-size:2em;
+}
+.formItem label{
+position: absolute;
+text-align: center;
+}
+.ui-input-text{
+margin-left: 30px;
+}
+.tdEvent{
+vertical-align: top;
+border-bottom-color: #e5e5e5;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+}
+table{
+width:100%;
+}
+#userlist{
+display:none;
+}
+#booonsloaderlogo{
+width:100%;
+top:40%;
+}
+img 
+{
+	width: 100%;
+}
+
+#eventList-ul{
+	list-style-type: none;
+	margin: 0;
+	padding:0;
+}
+
+div.divRoundCounter, .divRoundRunner{
+	text-align: center;
+	font-size: 0.6em;
+}
+
+span.countDown{
+	font-size: 2.7em;
+}
+
+.liProduct{
+	height: 40px;
+}
